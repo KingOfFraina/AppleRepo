@@ -25,7 +25,11 @@ class SpeechRecognizer: ObservableObject {
         }
     }
     
+    private var commandTimer: Timer?
+    
     var transcript: String = ""
+    var command: String = ""
+    var givingCommand: Bool = false
     
     private var audioEngine: AVAudioEngine?
     private var request: SFSpeechAudioBufferRecognitionRequest?
@@ -121,22 +125,44 @@ class SpeechRecognizer: ObservableObject {
         return (audioEngine, request)
     }
     
+    @objc func fireTimer() {
+        print("Scusa non ho capito...")
+    }
+    
     private func recognitionHandler(result: SFSpeechRecognitionResult?, error: Error?) {
-        print(transcript)
-        if transcript.localizedCaseInsensitiveContains("ok fabio") {
-            print("TROVATO")
-            return;
+        print("CI SONOOO")
+        print("TRANSCRIPT: \(transcript)")
+        print("COMMAND: \(command)")
+        if transcript.localizedCaseInsensitiveContains("ok fabio"){
+            givingCommand = true
+            stopTranscribing()
+            transcribe()
+            transcript = ""
+            commandTimer = Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: false)
+            return
         }
-        let receivedFinalResult = result?.isFinal ?? false
-        let receivedError = error != nil
         
-        if receivedFinalResult || receivedError {
-            audioEngine?.stop()
-            audioEngine?.inputNode.removeTap(onBus: 0)
+        if command.localizedCaseInsensitiveContains("cuciniamo la pizza"){
+            commandTimer?.invalidate();
+            givingCommand = false
+            command = ""
+            print("VA BENE CUCINIAMO")
         }
+
+//        let receivedFinalResult = result?.isFinal ?? false
+//        let receivedError = error != nil
+//
+//        if receivedFinalResult || receivedError {
+//            audioEngine?.stop()
+//            audioEngine?.inputNode.removeTap(onBus: 0)
+//        }
         
         if let result = result {
-            speak(result.bestTranscription.formattedString)
+            if givingCommand {
+                command = result.bestTranscription.formattedString
+            } else {
+                transcript = result.bestTranscription.formattedString
+            }
         }
     }
     
