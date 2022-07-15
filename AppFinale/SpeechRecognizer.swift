@@ -43,9 +43,11 @@ class SpeechRecognizer: ObservableObject {
     init() {
         recognizer = SFSpeechRecognizer()
         Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { timer in
-            self.stopTranscribing()
-            self.transcribe()
-            print("Timer fired!")
+            if !self.givingCommand {
+                self.stopTranscribing()
+                self.transcribe()
+                print("Timer fired!")
+            }
         }
         Task(priority: .background) {
             do {
@@ -65,7 +67,10 @@ class SpeechRecognizer: ObservableObject {
     }
     
     @objc func fireTimer() {
-            print("Scusa non ho capito...")
+        print("Scusa non ho capito...")
+        self.stopTranscribing()
+        self.transcribe()
+        print("Timer fired!")
     }
     
     deinit {
