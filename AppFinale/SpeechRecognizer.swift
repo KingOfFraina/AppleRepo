@@ -25,12 +25,12 @@ class SpeechRecognizer: ObservableObject {
         }
     }
     
+    var transcript: String = ""
     private var commandTimer: Timer?
     
-    var transcript: String = ""
     var command: String = ""
     var givingCommand: Bool = false
-    
+
     private var audioEngine: AVAudioEngine?
     private var request: SFSpeechAudioBufferRecognitionRequest?
     private var task: SFSpeechRecognitionTask?
@@ -42,7 +42,11 @@ class SpeechRecognizer: ObservableObject {
      */
     init() {
         recognizer = SFSpeechRecognizer()
-        
+        Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { timer in
+            self.stopTranscribing()
+            self.transcribe()
+            print("Timer fired!")
+        }
         Task(priority: .background) {
             do {
                 guard recognizer != nil else {
@@ -60,6 +64,10 @@ class SpeechRecognizer: ObservableObject {
         }
     }
     
+    @objc func fireTimer() {
+            print("Scusa non ho capito...")
+    }
+    
     deinit {
         reset()
     }
@@ -74,7 +82,6 @@ class SpeechRecognizer: ObservableObject {
         DispatchQueue(label: "Speech Recognizer Queue", qos: .background).async { [weak self] in
             guard let self = self, let recognizer = self.recognizer, recognizer.isAvailable else {
                 self?.speakError(RecognizerError.recognizerIsUnavailable)
-                
                 return
             }
             
@@ -125,15 +132,12 @@ class SpeechRecognizer: ObservableObject {
         return (audioEngine, request)
     }
     
-    @objc func fireTimer() {
-        print("Scusa non ho capito...")
-    }
-    
     private func recognitionHandler(result: SFSpeechRecognitionResult?, error: Error?) {
         print("CI SONOOO")
         print("TRANSCRIPT: \(transcript)")
         print("COMMAND: \(command)")
         if transcript.localizedCaseInsensitiveContains("ok fabio"){
+            print("ENTRATO IN OK FABIO")
             givingCommand = true
             stopTranscribing()
             transcribe()

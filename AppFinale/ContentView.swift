@@ -8,10 +8,11 @@ import AVFoundation
 struct ContentView: View {
     @StateObject var speechRecognizer = SpeechRecognizer()
     @State private var isRecording = false
-
+    private var player: AVPlayer { AVPlayer.sharedDingPlayer }
+    
     var body: some View {
-        VStack {
-            Text("CIao")
+        ZStack {
+            RoundedRectangle(cornerRadius: 16)
         }
         .padding()
         .onAppear {
