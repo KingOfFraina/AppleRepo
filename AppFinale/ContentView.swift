@@ -6,25 +6,17 @@ import SwiftUI
 import AVFoundation
 
 struct ContentView: View {
-    @StateObject var speechRecognizer = SpeechRecognizer()
+    //@StateObject var speechRecognizer
     @State private var isRecording = false
     private var player: AVPlayer { AVPlayer.sharedDingPlayer }
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 16)
+        Button(action: {SpeechRecognizer(recipe: Recipe.pancake).transcribe()}) {
+            Text("Pancake")
         }
         .padding()
-        .onAppear {
-            speechRecognizer.reset()
-            speechRecognizer.transcribe()
-            isRecording = true
-        }
-        .onDisappear {
-            speechRecognizer.stopTranscribing()
-            isRecording = false
-        }
         .navigationBarTitleDisplayMode(.inline)
     }
+
 }
 
