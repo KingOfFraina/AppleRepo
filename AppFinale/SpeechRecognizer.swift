@@ -27,7 +27,7 @@ class SpeechRecognizer: ObservableObject {
     
     var transcript: String = ""
     private var commandTimer: Timer?
-    
+    var notUnderstood = false //if the assistant already said "I didn't understand" he won't say it anymore until he will receive a valid command
     var command: String = ""
     var givingCommand: Bool = false
 
@@ -67,10 +67,12 @@ class SpeechRecognizer: ObservableObject {
     }
     
     @objc func fireTimer() {
-        print("Scusa non ho capito...")
+        if !notUnderstood{
+            print("Scusa non ho capito...")
+            notUnderstood = true
+        }
         self.stopTranscribing()
         self.transcribe()
-        print("Timer fired!")
     }
     
     deinit {
@@ -138,11 +140,9 @@ class SpeechRecognizer: ObservableObject {
     }
     
     private func recognitionHandler(result: SFSpeechRecognitionResult?, error: Error?) {
-        print("CI SONOOO")
         print("TRANSCRIPT: \(transcript)")
         print("COMMAND: \(command)")
         if transcript.localizedCaseInsensitiveContains("ok fabio"){
-            print("ENTRATO IN OK FABIO")
             givingCommand = true
             stopTranscribing()
             transcribe()
@@ -154,6 +154,7 @@ class SpeechRecognizer: ObservableObject {
         if command.localizedCaseInsensitiveContains("cuciniamo la pizza"){
             commandTimer?.invalidate();
             givingCommand = false
+            notUnderstood = false
             command = ""
             print("VA BENE CUCINIAMO")
         }
