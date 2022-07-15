@@ -156,7 +156,10 @@ class SpeechRecognizer: ObservableObject {
             givingCommand = false
             notUnderstood = false
             command = ""
-            print("VA BENE CUCINIAMO")
+            let utterance = AVSpeechUtterance(string: "VA BENE CUCINIAMO")
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-EN")
+            let synthetizer = AVSpeechSynthesizer()
+            synthetizer.speak(utterance)
         }
 
 //        let receivedFinalResult = result?.isFinal ?? false
