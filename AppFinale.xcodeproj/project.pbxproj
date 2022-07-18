@@ -23,6 +23,7 @@
 		0CD52805288009D600F70C16 /* AppFinaleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD52804288009D600F70C16 /* AppFinaleTests.swift */; };
 		0CD5280F288009D600F70C16 /* AppFinaleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD5280E288009D600F70C16 /* AppFinaleUITests.swift */; };
 		0CD52811288009D600F70C16 /* AppFinaleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD52810288009D600F70C16 /* AppFinaleUITestsLaunchTests.swift */; };
+		99005D812881664B001DCEC6 /* RicettaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99005D802881664B001DCEC6 /* RicettaView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		0CD5280A288009D600F70C16 /* AppFinaleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppFinaleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD5280E288009D600F70C16 /* AppFinaleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFinaleUITests.swift; sourceTree = "<group>"; };
 		0CD52810288009D600F70C16 /* AppFinaleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFinaleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		99005D802881664B001DCEC6 /* RicettaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RicettaView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				0CD527FA288009D600F70C16 /* Preview Assets.xcassets */,
+				99005D802881664B001DCEC6 /* RicettaView.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				00E14B28288149DD00CAAE98 /* ContentView.swift in Sources */,
 				00E14B1F288149DD00CAAE98 /* ScrumStore.swift in Sources */,
 				00E14B24288149DD00CAAE98 /* ScrumTimer.swift in Sources */,
+				99005D812881664B001DCEC6 /* RicettaView.swift in Sources */,
 				00E14B26288149DD00CAAE98 /* ErrorWrapper.swift in Sources */,
 				00E14B27288149DD00CAAE98 /* History.swift in Sources */,
 				00E14B20288149DD00CAAE98 /* DailyScrum.swift in Sources */,
