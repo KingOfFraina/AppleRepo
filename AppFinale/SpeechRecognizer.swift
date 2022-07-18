@@ -24,12 +24,17 @@ class SpeechRecognizer: ObservableObject {
             }
         }
     }
+
     
     var transcript: String = ""
     private var commandTimer: Timer?
     var notUnderstood = false //if the assistant already said "I didn't understand" he won't say it anymore until he will receive a valid command
+    var recipe: Recipe
     var command: String = ""
+    var lastInteraction: String = ""
     var givingCommand: Bool = false
+    var phase: Int = 1
+    let synthetizer = AVSpeechSynthesizer()
 
     private var audioEngine: AVAudioEngine?
     private var request: SFSpeechAudioBufferRecognitionRequest?
@@ -40,7 +45,8 @@ class SpeechRecognizer: ObservableObject {
      Initializes a new speech recognizer. If this is the first time you've used the class, it
      requests access to the speech recognizer and the microphone.
      */
-    init() {
+    init(recipe: Recipe) {
+        self.recipe = recipe
         recognizer = SFSpeechRecognizer()
         Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { timer in
             if !self.givingCommand {
@@ -64,6 +70,10 @@ class SpeechRecognizer: ObservableObject {
                 speakError(error)
             }
         }
+        let utterance = AVSpeechUtterance(string: "Hello! To make pancakes you need: 125 grams of flour, 25 grams of butter, 2 eggs, 200 milliliters of milk, 15 grams of sugar, 6 grams of baking powder for cakes, are you sure you have it all?")
+//        let utterance = AVSpeechUtterance(string: "Hello")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+        synthetizer.speak(utterance)
     }
     
     @objc func fireTimer() {
@@ -150,16 +160,82 @@ class SpeechRecognizer: ObservableObject {
             commandTimer = Timer.scheduledTimer(timeInterval: 15.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: false)
             return
         }
+        if givingCommand {
+            print("COMMAND")
+            switch recipe {
+                case .pancake:
+                    switch phase{
+                        case 1:
+                            if command.localizedCaseInsensitiveContains("yes"){
+                                commandTimer?.invalidate();
+                                givingCommand = false
+                                notUnderstood = false
+                                command = ""
+                                phase = 2
+                                let utterance = AVSpeechUtterance(string: "Good, then let’s get started! First you need to melt the butter. After putting the butter in a small saucepan, put it on the stove over low heat. Call me when it’s ready.")
+                                utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+                                utterance.pitchMultiplier = 1.5
+                                utterance.rate = 0.43
+                                synthetizer.speak(utterance)
+                            }
+                        case 2:
+                            print(command.localizedCaseInsensitiveContains("i've done"))
+                            if command.localizedCaseInsensitiveContains("i've done"){
+                                self.stopTranscribing()
+                                self.transcribe()
+                                print("DONE")
+                                commandTimer?.invalidate();
+                                givingCommand = false
+                                notUnderstood = false
+                                command = ""
+                                phase = 3
+                                let utterance = AVSpeechUtterance(string: "Now it’s time to separate the egg yolks from the whites. Use two different bowls. I’ll wait here.")
+                                utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+                                utterance.pitchMultiplier = 1.5
+                                utterance.rate = 0.43
+                                synthetizer.speak(utterance)
+                            }
+                    case 3:
+                        if command.localizedCaseInsensitiveContains("i did it"){
+                            self.stopTranscribing()
+                            self.transcribe()
+                            commandTimer?.invalidate();
+                            givingCommand = false
+                            notUnderstood = false
+                            command = ""
+                            phase = 4
+                            let utterance = AVSpeechUtterance(string: "Well done! Now use a whisk to beat eggs together with the melted butter and the milk. I suggest to add also a pinch of salt. Call me when the mixture is clear and homogeneous.")
+                            utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+                            utterance.pitchMultiplier = 1.5
+                            utterance.rate = 0.43
+                            synthetizer.speak(utterance)
+                        }
+                    case 4:
+                        if command.localizedCaseInsensitiveContains("let's go on"){
+                            self.stopTranscribing()
+                            self.transcribe()
+                            commandTimer?.invalidate();
+                            givingCommand = false
+                            notUnderstood = false
+                            command = ""
+                            phase = 4
+                            let utterance = AVSpeechUtterance(string: "Add the baking powder to the flour and use a sieve to sift the mix of powders. Then mix it with the previous compound.")
+                            utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+                            utterance.pitchMultiplier = 1.5
+                            utterance.rate = 0.43
+                            synthetizer.speak(utterance)
+                        }
+                        default: print("error")
+                
+                    }
+            }
+        }
         
         if command.localizedCaseInsensitiveContains("cuciniamo la pizza"){
             commandTimer?.invalidate();
             givingCommand = false
             notUnderstood = false
             command = ""
-            let utterance = AVSpeechUtterance(string: "VA BENE CUCINIAMO")
-            utterance.voice = AVSpeechSynthesisVoice(language: "en-EN")
-            let synthetizer = AVSpeechSynthesizer()
-            synthetizer.speak(utterance)
         }
 
 //        let receivedFinalResult = result?.isFinal ?? false
