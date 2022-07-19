@@ -1,13 +1,13 @@
+/*
+See LICENSE folder for this sample’s licensing information.
+*/
+
 import AVFoundation
-
 import Foundation
-
 import Speech
-
 import SwiftUI
 
 /// A helper for transcribing speech to text using SFSpeechRecognizer and AVAudioEngine.
-
 class SpeechRecognizer: ObservableObject {
     enum RecognizerError: Error {
         case nilRecognizer
@@ -33,10 +33,12 @@ class SpeechRecognizer: ObservableObject {
     var command: String = ""
     var lastInteraction: String = ""
     var givingCommand: Bool = false
-    var phase: Int = 0
+    @Published var step: Int = 0
+    var firstStep = false
+    //@ObservedObject var observableStep: ObservableStep = ObservableStep()
     let synthetizer = AVSpeechSynthesizer()
     var userConfirms = ["i did it", "i've done", "let's go on"]
-    var pancakesSteps = ["Hello! To make pancakes you need: 125 grams of flour, 25 grams of butter, 2 eggs, 200 milliliters of milk, 15 grams of sugar, 6 grams of baking powder for cakes, are you sure you have it",
+    @Published var pancakesSteps = ["Hello! To make pancakes you need: 125 grams of flour, 25 grams of butter, 2 eggs, 200 milliliters of milk, 15 grams of sugar, 6 grams of baking powder for cakes, are you sure you have it",
                          
         "Good, then let’s get started! First you need to melt the butter. After putting the butter in a small saucepan, put it on the stove over low heat. Call me when it’s ready.",
                          
@@ -70,7 +72,7 @@ class SpeechRecognizer: ObservableObject {
         self.recipe = recipe
         recognizer = SFSpeechRecognizer()
         Timer.scheduledTimer(withTimeInterval: 30.0, repeats: true) { timer in
-            if !self.givingCommand {
+            if !self.givingCommand || self.notUnderstood {
                 self.stopTranscribing()
                 self.transcribe()
                 print("Timer fired!")
@@ -91,15 +93,15 @@ class SpeechRecognizer: ObservableObject {
                 speakError(error)
             }
         }
-        let utterance = AVSpeechUtterance(string: "Hello! To make pancakes you need: 125 grams of flour, 25 grams of butter, 2 eggs, 200 milliliters of milk, 15 grams of sugar, 6 grams of baking powder for cakes, are you sure you have it all?")
-//        let utterance = AVSpeechUtterance(string: "Hello")
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
-        synthetizer.speak(utterance)
     }
     
     @objc func fireTimer() {
         if !notUnderstood{
-            print("Scusa non ho capito...")
+            let utterance = AVSpeechUtterance(string: "Sorry, I didn't understand. Can you repeat, please?")
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+            utterance.pitchMultiplier = 1.5
+            utterance.rate = 0.43
+            synthetizer.speak(utterance)
             notUnderstood = true
         }
         self.stopTranscribing()
@@ -113,8 +115,8 @@ class SpeechRecognizer: ObservableObject {
     /**
         Begin transcribing audio.
      
-        Creates a SFSpeechRecognitionTask that transcribes speech to text until you call stopTranscribing().
-        The resulting transcription is continuously written to the published transcript property.
+        Creates a `SFSpeechRecognitionTask` that transcribes speech to text until you call `stopTranscribing()`.
+        The resulting transcription is continuously written to the published `transcript` property.
      */
     func transcribe() {
         DispatchQueue(label: "Speech Recognizer Queue", qos: .background).async { [weak self] in
@@ -133,6 +135,14 @@ class SpeechRecognizer: ObservableObject {
                 self.speakError(error)
             }
         }
+        
+        if !firstStep {
+            let utterance = AVSpeechUtterance(string: "Hello!")
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+            synthetizer.speak(utterance)
+            firstStep = true
+        }
+
     }
     
     /// Stop transcribing audio.
@@ -173,7 +183,9 @@ class SpeechRecognizer: ObservableObject {
     private func recognitionHandler(result: SFSpeechRecognitionResult?, error: Error?) {
         print("TRANSCRIPT: \(transcript)")
         print("COMMAND: \(command)")
-        if transcript.localizedCaseInsensitiveContains("ok john"){
+        //print("STEPZ: \(observableStep.step)")
+        if transcript.localizedCaseInsensitiveContains("hey byte") || transcript.localizedCaseInsensitiveContains("hey bite") || transcript.localizedCaseInsensitiveContains("hi byte") || transcript.localizedCaseInsensitiveContains("hi bite") ||
+            transcript.localizedCaseInsensitiveContains("a bite"){
             givingCommand = true
             stopTranscribing()
             transcribe()
@@ -185,9 +197,9 @@ class SpeechRecognizer: ObservableObject {
             print("COMMAND")
             switch recipe {
                 case .pancake:
-                    if(phase == 0){
-
+                if(step == 0){
                         if(command.localizedCaseInsensitiveContains("yes")){
+                           synthetizer.stopSpeaking(at: .immediate)
                            self.stopTranscribing()
                            self.transcribe()
                            print("DONE")
@@ -195,14 +207,14 @@ class SpeechRecognizer: ObservableObject {
                            givingCommand = false
                            notUnderstood = false
                            command = ""
-                           phase = phase + 1
-                           let utterance = AVSpeechUtterance(string: pancakesSteps[phase])
+                           step = step + 1
+                           let utterance = AVSpeechUtterance(string: pancakesSteps[step])
                            utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
                            utterance.pitchMultiplier = 1.5
                            utterance.rate = 0.43
                            synthetizer.speak(utterance)
                        }
-                    } else if(phase < pancakesSteps.capacity - 1){
+                    } else if(step < pancakesSteps.capacity - 1){
                         var contains = false
                         for userConfirm in userConfirms {
                             if(command.localizedCaseInsensitiveContains(userConfirm)){
@@ -211,6 +223,7 @@ class SpeechRecognizer: ObservableObject {
                             }
                         }
                         if contains {
+                           synthetizer.stopSpeaking(at: .immediate)
                            self.stopTranscribing()
                            self.transcribe()
                            print("DONE")
@@ -218,8 +231,8 @@ class SpeechRecognizer: ObservableObject {
                            givingCommand = false
                            notUnderstood = false
                            command = ""
-                           phase = phase + 1
-                           let utterance = AVSpeechUtterance(string: pancakesSteps[phase])
+                           step = step + 1
+                           let utterance = AVSpeechUtterance(string: pancakesSteps[step])
                            utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
                            utterance.pitchMultiplier = 1.5
                            utterance.rate = 0.43
@@ -267,6 +280,30 @@ class SpeechRecognizer: ObservableObject {
             errorMessage += error.localizedDescription
         }
         transcript = "<< \(errorMessage) >>"
+    }
+    
+    func previousStep(){
+        if step > 0 {
+            synthetizer.stopSpeaking(at: .immediate)
+            step = step - 1
+            let utterance = AVSpeechUtterance(string: pancakesSteps[step])
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+            utterance.pitchMultiplier = 1.5
+            utterance.rate = 0.43
+            synthetizer.speak(utterance)
+        }
+    }
+    
+    func nextStep(){
+        if step < pancakesSteps.capacity - 1 {
+            synthetizer.stopSpeaking(at: .immediate)
+            step = step + 1
+            let utterance = AVSpeechUtterance(string: pancakesSteps[step])
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+            utterance.pitchMultiplier = 1.5
+            utterance.rate = 0.43
+            synthetizer.speak(utterance)
+        }
     }
 }
 
