@@ -24,6 +24,8 @@
 		0CD5280F288009D600F70C16 /* AppFinaleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD5280E288009D600F70C16 /* AppFinaleUITests.swift */; };
 		0CD52811288009D600F70C16 /* AppFinaleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD52810288009D600F70C16 /* AppFinaleUITestsLaunchTests.swift */; };
 		99005D812881664B001DCEC6 /* RicettaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99005D802881664B001DCEC6 /* RicettaView.swift */; };
+		992027922886A3FC00984F73 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992027912886A3FC00984F73 /* ModalView.swift */; };
+		992027942886A41D00984F73 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992027932886A41D00984F73 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		0CD5280E288009D600F70C16 /* AppFinaleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFinaleUITests.swift; sourceTree = "<group>"; };
 		0CD52810288009D600F70C16 /* AppFinaleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFinaleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		99005D802881664B001DCEC6 /* RicettaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RicettaView.swift; sourceTree = "<group>"; };
+		992027912886A3FC00984F73 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		992027932886A41D00984F73 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,9 @@
 				00E14B1A288149DD00CAAE98 /* ScrumTimer.swift */,
 				00E14B18288149DD00CAAE98 /* SpeechRecognizer.swift */,
 				00E14B19288149DD00CAAE98 /* Theme.swift */,
+				99005D802881664B001DCEC6 /* RicettaView.swift */,
+				992027912886A3FC00984F73 /* ModalView.swift */,
+				992027932886A41D00984F73 /* Colors.swift */,
 				0CD527F7288009D600F70C16 /* Assets.xcassets */,
 				0CD527F9288009D600F70C16 /* Preview Content */,
 				0022712228816B50001DBE2E /* Recipe.swift */,
@@ -135,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				0CD527FA288009D600F70C16 /* Preview Assets.xcassets */,
-				99005D802881664B001DCEC6 /* RicettaView.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -290,11 +296,13 @@
 				00E14B22288149DD00CAAE98 /* SpeechRecognizer.swift in Sources */,
 				00E14B28288149DD00CAAE98 /* ContentView.swift in Sources */,
 				00E14B1F288149DD00CAAE98 /* ScrumStore.swift in Sources */,
+				992027942886A41D00984F73 /* Colors.swift in Sources */,
 				00E14B24288149DD00CAAE98 /* ScrumTimer.swift in Sources */,
 				99005D812881664B001DCEC6 /* RicettaView.swift in Sources */,
 				00E14B26288149DD00CAAE98 /* ErrorWrapper.swift in Sources */,
 				00E14B27288149DD00CAAE98 /* History.swift in Sources */,
 				00E14B20288149DD00CAAE98 /* DailyScrum.swift in Sources */,
+				992027922886A3FC00984F73 /* ModalView.swift in Sources */,
 				00E14B23288149DD00CAAE98 /* Theme.swift in Sources */,
 				00E14B21288149DD00CAAE98 /* AppFinaleApp.swift in Sources */,
 				00E14B25288149DD00CAAE98 /* AVPlayer+Ding.swift in Sources */,
