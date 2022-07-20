@@ -26,6 +26,14 @@
 		0C21EF2A2887FB9100E56508 /* cream-DEMO.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C21EF052887E9CD00E56508 /* cream-DEMO.ttf */; };
 		0C21EF2B2887FB9100E56508 /* cream-DEMO.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C21EF052887E9CD00E56508 /* cream-DEMO.ttf */; };
 		0C21EF2C2887FB9200E56508 /* cream-DEMO.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C21EF052887E9CD00E56508 /* cream-DEMO.ttf */; };
+		0C21EF2D2887FD1C00E56508 /* cookie-crisp.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C21EF212887F3D300E56508 /* cookie-crisp.ttf */; };
+		0C21EF2E2887FD1C00E56508 /* cookie-crisp.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C21EF212887F3D300E56508 /* cookie-crisp.ttf */; };
+		0C21EF2F2887FD1D00E56508 /* cookie-crisp.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C21EF212887F3D300E56508 /* cookie-crisp.ttf */; };
+		0C21EF302887FD3D00E56508 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C21EEE22886DBE100E56508 /* ContentView.swift */; };
+		0C21EF312887FD3E00E56508 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C21EEE22886DBE100E56508 /* ContentView.swift */; };
+		0C21EF332887FE2A00E56508 /* MochaCookies.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C21EF322887FE2900E56508 /* MochaCookies.ttf */; };
+		0C21EF342887FE2A00E56508 /* MochaCookies.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C21EF322887FE2900E56508 /* MochaCookies.ttf */; };
+		0C21EF352887FE2A00E56508 /* MochaCookies.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C21EF322887FE2900E56508 /* MochaCookies.ttf */; };
 		0CD527F8288009D600F70C16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD527F7288009D600F70C16 /* Assets.xcassets */; };
 		0CD527FB288009D600F70C16 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD527FA288009D600F70C16 /* Preview Assets.xcassets */; };
 		0CD52805288009D600F70C16 /* AppFinaleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD52804288009D600F70C16 /* AppFinaleTests.swift */; };
@@ -69,9 +77,9 @@
 		0C21EEEB2887392D00E56508 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		0C21EEF42887E23000E56508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0C21EF052887E9CD00E56508 /* cream-DEMO.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cream-DEMO.ttf"; path = "../../../cream-DEMO.ttf"; sourceTree = "<group>"; };
-		0C21EF192887F2F200E56508 /* cookie-crisp.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cookie-crisp.ttf"; path = "../../../cookie-crisp.ttf"; sourceTree = "<group>"; };
 		0C21EF1D2887F35500E56508 /* Cooking-Water.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Cooking-Water.otf"; path = "../../../../Downloads/Cooking-Water.otf"; sourceTree = "<group>"; };
 		0C21EF212887F3D300E56508 /* cookie-crisp.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cookie-crisp.ttf"; sourceTree = "<group>"; };
+		0C21EF322887FE2900E56508 /* MochaCookies.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MochaCookies.ttf; path = ../../../MochaCookies.ttf; sourceTree = "<group>"; };
 		0CD527F0288009D400F70C16 /* AppFinale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppFinale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD527F7288009D600F70C16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CD527FA288009D600F70C16 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -110,10 +118,10 @@
 		0C21EEED288740A300E56508 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				0C21EF322887FE2900E56508 /* MochaCookies.ttf */,
 				0C21EF1D2887F35500E56508 /* Cooking-Water.otf */,
 				0C21EF212887F3D300E56508 /* cookie-crisp.ttf */,
 				0C21EF052887E9CD00E56508 /* cream-DEMO.ttf */,
-				0C21EF192887F2F200E56508 /* cookie-crisp.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -294,6 +302,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C21EF332887FE2A00E56508 /* MochaCookies.ttf in Resources */,
+				0C21EF2D2887FD1C00E56508 /* cookie-crisp.ttf in Resources */,
 				0CD527FB288009D600F70C16 /* Preview Assets.xcassets in Resources */,
 				0C21EF2A2887FB9100E56508 /* cream-DEMO.ttf in Resources */,
 				0CD527F8288009D600F70C16 /* Assets.xcassets in Resources */,
@@ -304,7 +314,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C21EF2E2887FD1C00E56508 /* cookie-crisp.ttf in Resources */,
 				0C21EF2B2887FB9100E56508 /* cream-DEMO.ttf in Resources */,
+				0C21EF342887FE2A00E56508 /* MochaCookies.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +324,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C21EF2F2887FD1D00E56508 /* cookie-crisp.ttf in Resources */,
 				0C21EF2C2887FB9200E56508 /* cream-DEMO.ttf in Resources */,
+				0C21EF352887FE2A00E56508 /* MochaCookies.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C21EF302887FD3D00E56508 /* ContentView.swift in Sources */,
 				0CD52805288009D600F70C16 /* AppFinaleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,6 +371,7 @@
 			files = (
 				0CD5280F288009D600F70C16 /* AppFinaleUITests.swift in Sources */,
 				0CD52811288009D600F70C16 /* AppFinaleUITestsLaunchTests.swift in Sources */,
+				0C21EF312887FD3E00E56508 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
