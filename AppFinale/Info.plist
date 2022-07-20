@@ -7,5 +7,14 @@
 		<string>cream-DEMO.ttf</string>
 		<string>cookie-crisp.ttf</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string>launch</string>
+		<key>UILaunchScreen</key>
+		<dict/>
+	</dict>
+	<key>UIMainStoryboardFile~ipad</key>
+	<string>Launch Screen</string>
 </dict>
 </plist>

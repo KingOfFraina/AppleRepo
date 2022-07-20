@@ -33,6 +33,7 @@
 		0C21EF2F2887FD1D00E56508 /* cookie-crisp.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C21EF212887F3D300E56508 /* cookie-crisp.ttf */; };
 		0C21EF302887FD3D00E56508 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C21EEE22886DBE100E56508 /* ContentView.swift */; };
 		0C21EF312887FD3E00E56508 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C21EEE22886DBE100E56508 /* ContentView.swift */; };
+		0C6776F4288872350015E31C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C6776F3288872350015E31C /* Launch Screen.storyboard */; };
 		0CD527F8288009D600F70C16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD527F7288009D600F70C16 /* Assets.xcassets */; };
 		0CD527FB288009D600F70C16 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CD527FA288009D600F70C16 /* Preview Assets.xcassets */; };
 		0CD52805288009D600F70C16 /* AppFinaleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD52804288009D600F70C16 /* AppFinaleTests.swift */; };
@@ -80,6 +81,7 @@
 		0C21EF052887E9CD00E56508 /* cream-DEMO.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cream-DEMO.ttf"; path = "../../../cream-DEMO.ttf"; sourceTree = "<group>"; };
 		0C21EF1D2887F35500E56508 /* Cooking-Water.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Cooking-Water.otf"; path = "../../../../Downloads/Cooking-Water.otf"; sourceTree = "<group>"; };
 		0C21EF212887F3D300E56508 /* cookie-crisp.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "cookie-crisp.ttf"; path = "Fonts/cookie-crisp.ttf"; sourceTree = "<group>"; };
+		0C6776F3288872350015E31C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0CD527F0288009D400F70C16 /* AppFinale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppFinale.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CD527F7288009D600F70C16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CD527FA288009D600F70C16 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				0C21EEEB2887392D00E56508 /* SwiftUIView.swift */,
 				001A304628881C3300C6CD10 /* TimerView.swift */,
 				001A304828881C5700C6CD10 /* TimerModel.swift */,
+				0C6776F3288872350015E31C /* Launch Screen.storyboard */,
 			);
 			path = AppFinale;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				0C21EF2D2887FD1C00E56508 /* cookie-crisp.ttf in Resources */,
 				0CD527FB288009D600F70C16 /* Preview Assets.xcassets in Resources */,
 				0C21EF2A2887FB9100E56508 /* cream-DEMO.ttf in Resources */,
+				0C6776F4288872350015E31C /* Launch Screen.storyboard in Resources */,
 				0CD527F8288009D600F70C16 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,8 +525,8 @@
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -533,7 +537,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -553,8 +557,8 @@
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "This app uses speech recognition";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -565,7 +569,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

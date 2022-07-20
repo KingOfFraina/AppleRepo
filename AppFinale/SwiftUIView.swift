@@ -1,10 +1,3 @@
-//
-//  SwiftUIView.swift
-//  AppFinale
-//
-//  Created by Francesco Esposito on 19/07/22.
-//
-
 import SwiftUI
 
 struct SwiftUIView: View {

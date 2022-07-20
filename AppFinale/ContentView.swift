@@ -19,6 +19,8 @@ struct ContentView: View {
         colors: [Color.red, Color.red],
         startPoint: .top, endPoint: .bottom)
     
+    let color2 = Color(hex: 0x4a5364)
+    
     
     
     @State var searchText = ""
@@ -40,6 +42,7 @@ struct ContentView: View {
                             VStack{
                                 Text("Recipes")
                                     .font(.custom("cream-DEMO", size: 65))
+                                    .foregroundColor(color2)
                             }
                             
                         }
@@ -55,45 +58,50 @@ struct ContentView: View {
                                 Spacer()
                                 
                                 Text("Pancake").padding(-40)
-                                    .font(.custom("cream-DEMO", size: 23))
+                                    .font(.custom("cream-DEMO", size: 30))
+                                    .foregroundColor(color2)
                             }
                             VStack{
                                 Image("image4").resizable().aspectRatio(contentMode:  .fit).border(Color.secondary).cornerRadius(30).padding().frame(width: 250, height: 250, alignment: .leading)
                                 Spacer()
                                 Text("Hot-Dog").padding(-40)
-                                    .font(.custom("cream-DEMO", size: 23))
+                                    .font(.custom("cream-DEMO", size: 30))
+                                    .foregroundColor(color2)
                             }
                             VStack{
                                 Image("image8").resizable().aspectRatio(contentMode:  .fit).border(Color.secondary).cornerRadius(30).padding().frame(width: 250, height: 250, alignment: .leading)
                                 Spacer()
                                 Text("Pizza").padding(-40)
-                                    .font(.custom("cream-DEMO", size: 23))
+                                    .font(.custom("cream-DEMO", size: 30))
+                                    .foregroundColor(color2)
                             }
                             VStack{
                                 Image("image7").resizable().aspectRatio(contentMode:  .fit).border(Color.secondary).cornerRadius(30).padding().frame(width: 250, height: 250, alignment: .leading)
                                 Spacer()
                                 Text("Carbonara").padding(-40)
-                                    .font(.custom("cream-DEMO", size: 23))
+                                    .font(.custom("cream-DEMO", size: 30))
+                                    .foregroundColor(color2)
                             }
                             VStack{
                                 Image("image9").resizable().aspectRatio(contentMode:  .fit).border(Color.secondary).cornerRadius(30).padding().frame(width: 250, height: 250, alignment: .leading)
                                 Spacer()
                                 Text("Raspberry Tart").padding(-40)
-                                    .font(.custom("cream-DEMO", size: 23))
+                                    .font(.custom("cream-DEMO", size: 30))
+                                    .foregroundColor(color2)
                             }
                             VStack{
                                 Image("image5").resizable().aspectRatio(contentMode:  .fit).border(Color.secondary).cornerRadius(30).padding().frame(width: 250, height: 250, alignment: .leading)
                                 Spacer()
                                 Text("Hamburger").padding(-40)
-                                    .font(.custom("cream-DEMO", size: 23))
+                                    .font(.custom("cream-DEMO", size: 30))
+                                    .foregroundColor(color2)
                                 
                             }
-                        })
+                        }).padding(-10)
                     }.searchable(text: $searchText).padding(.horizontal)
                 }
             }
         }
-        
         .navigationViewStyle(StackNavigationViewStyle())
         
     }
@@ -104,8 +112,12 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
-            .previewInterfaceOrientation(.portrait)
+        Group {
+            ContentView()
+                .previewInterfaceOrientation(.landscapeLeft)
+            ContentView()
+                .previewInterfaceOrientation(.landscapeLeft)
+        }
     }
 }
 
