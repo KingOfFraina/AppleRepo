@@ -32,8 +32,10 @@ class SpeechRecognizer: ObservableObject {
     var recipe: Recipe
     var command: String = ""
     var lastInteraction: String = ""
-    var givingCommand: Bool = false
+    @Published var givingCommand: Bool = false
+    @Published var waitingForTimer : Bool = false
     @Published var step: Int = 0
+    @Published var displayTimer = false
     var firstStep = false
     //@ObservedObject var observableStep: ObservableStep = ObservableStep()
     let synthetizer = AVSpeechSynthesizer()
@@ -53,7 +55,7 @@ class SpeechRecognizer: ObservableObject {
         "Now add this mixture to the one with the yolks and slowly mix it so that became a smooth cream. Come on, it’s almost over!",
                          
         "It’s time to cook! Put a cooking pan on the stove over low heat and grease it with butter. Use a scoop to take a small quantity of dough and pour it in the pan slowly. The more precise you’ll be the more perfect disk you’ll obtain. Wait about 2 minutes and you’ll see some bubbles on the pancakes. Do you see them?",
-                         
+                                                             
         "Good so take a spatula and turn the pancake. Then wait another minute.",
                          
         "Perfect! You just have to repeat this stage until you cook the entire dough. Then use your creativity and fantasy to decorate the dessert and enjoy it! See you in the kitchen for another recipe, bye!"
@@ -137,7 +139,7 @@ class SpeechRecognizer: ObservableObject {
         }
         
         if !firstStep {
-            let utterance = AVSpeechUtterance(string: "Hello!")
+            let utterance = AVSpeechUtterance(string: "Hello! To make pancakes you need: 125 grams of flour, 25 grams of butter, 2 eggs, 200 milliliters of milk, 15 grams of sugar, 6 grams of baking powder for cakes, are you sure you have it")
             utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
             synthetizer.speak(utterance)
             firstStep = true
@@ -183,6 +185,8 @@ class SpeechRecognizer: ObservableObject {
     private func recognitionHandler(result: SFSpeechRecognitionResult?, error: Error?) {
         print("TRANSCRIPT: \(transcript)")
         print("COMMAND: \(command)")
+        print("Step: \(step)")
+        print("waiting for timer \(waitingForTimer)")
         //print("STEPZ: \(observableStep.step)")
         if transcript.localizedCaseInsensitiveContains("hey byte") || transcript.localizedCaseInsensitiveContains("hey bite") || transcript.localizedCaseInsensitiveContains("hi byte") || transcript.localizedCaseInsensitiveContains("hi bite") ||
             transcript.localizedCaseInsensitiveContains("a bite"){
@@ -214,7 +218,19 @@ class SpeechRecognizer: ObservableObject {
                            utterance.rate = 0.43
                            synthetizer.speak(utterance)
                        }
-                    } else if(step < pancakesSteps.capacity - 1){
+                } else if(step == 7 && waitingForTimer) {
+                    if command.localizedCaseInsensitiveContains("i'm ready") {
+                       displayTimer = true
+                        commandTimer?.invalidate();
+                        givingCommand = false
+                        notUnderstood = false
+                        command = ""
+                        Timer.scheduledTimer(withTimeInterval: 120.0, repeats: false) { timer in
+                            self.displayTimer = false
+                            self.nextStep()
+                        }
+                   }
+                } else if(step < pancakesSteps.capacity - 1){
                         var contains = false
                         for userConfirm in userConfirms {
                             if(command.localizedCaseInsensitiveContains(userConfirm)){
@@ -232,6 +248,9 @@ class SpeechRecognizer: ObservableObject {
                            notUnderstood = false
                            command = ""
                            step = step + 1
+                            if(step == 7){
+                                 waitingForTimer = true
+                            }
                            let utterance = AVSpeechUtterance(string: pancakesSteps[step])
                            utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
                            utterance.pitchMultiplier = 1.5
@@ -286,6 +305,10 @@ class SpeechRecognizer: ObservableObject {
         if step > 0 {
             synthetizer.stopSpeaking(at: .immediate)
             step = step - 1
+            if(step == 7){
+                print("CI STO ")
+                 waitingForTimer = true
+            }
             let utterance = AVSpeechUtterance(string: pancakesSteps[step])
             utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
             utterance.pitchMultiplier = 1.5
@@ -298,6 +321,10 @@ class SpeechRecognizer: ObservableObject {
         if step < pancakesSteps.capacity - 1 {
             synthetizer.stopSpeaking(at: .immediate)
             step = step + 1
+            if(step == 7){
+                print("CI STO ")
+                 waitingForTimer = true
+            }
             let utterance = AVSpeechUtterance(string: pancakesSteps[step])
             utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
             utterance.pitchMultiplier = 1.5

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		001A304728881C3300C6CD10 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A304628881C3300C6CD10 /* TimerView.swift */; };
+		001A304928881C5700C6CD10 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001A304828881C5700C6CD10 /* TimerModel.swift */; };
 		0022712328816B50001DBE2E /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0022712228816B50001DBE2E /* Recipe.swift */; };
 		00E14B1F288149DD00CAAE98 /* ScrumStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E14B15288149DD00CAAE98 /* ScrumStore.swift */; };
 		00E14B20288149DD00CAAE98 /* DailyScrum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E14B16288149DD00CAAE98 /* DailyScrum.swift */; };
@@ -56,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		001A304628881C3300C6CD10 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		001A304828881C5700C6CD10 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		0022712228816B50001DBE2E /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		00E14B15288149DD00CAAE98 /* ScrumStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrumStore.swift; sourceTree = "<group>"; };
 		00E14B16288149DD00CAAE98 /* DailyScrum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyScrum.swift; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 				0CD527F9288009D600F70C16 /* Preview Content */,
 				0022712228816B50001DBE2E /* Recipe.swift */,
 				0C21EEEB2887392D00E56508 /* SwiftUIView.swift */,
+				001A304628881C3300C6CD10 /* TimerView.swift */,
+				001A304828881C5700C6CD10 /* TimerModel.swift */,
 			);
 			path = AppFinale;
 			sourceTree = "<group>";
@@ -336,7 +342,9 @@
 				00E14B1F288149DD00CAAE98 /* ScrumStore.swift in Sources */,
 				00E14B24288149DD00CAAE98 /* ScrumTimer.swift in Sources */,
 				00E14B26288149DD00CAAE98 /* ErrorWrapper.swift in Sources */,
+				001A304728881C3300C6CD10 /* TimerView.swift in Sources */,
 				00E14B27288149DD00CAAE98 /* History.swift in Sources */,
+				001A304928881C5700C6CD10 /* TimerModel.swift in Sources */,
 				00E14B20288149DD00CAAE98 /* DailyScrum.swift in Sources */,
 				0C21EEE82886DBE100E56508 /* ModalView.swift in Sources */,
 				0C21EEE92886DBE100E56508 /* RicettaView.swift in Sources */,

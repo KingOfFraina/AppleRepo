@@ -39,7 +39,7 @@ struct ContentView: View {
                         HStack{
                             VStack{
                                 Text("Recipes")
-                                    .font(.custom("cookie-crisp", size: 46))
+                                    .font(.custom("cream-DEMO", size: 65))
                             }
                             
                         }
