@@ -15,14 +15,14 @@ struct TimerView: View {
     var body: some View {
         VStack {
             Text("\(vm.time)")
-                .font(.system(size: 70, weight: .medium, design: .rounded))
+                .font(.system(size: 50, weight: .medium, design: .rounded))
                 .alert("Timer done!", isPresented: $vm.showingAlert) {
                     Button("Continue", role: .cancel) {
                         // Code
                     }
                 }
                 .padding()
-                .frame(width: width)
+                .frame(width: width, height: 50)
                 .background(.thinMaterial)
                 .cornerRadius(20)
                 .overlay(

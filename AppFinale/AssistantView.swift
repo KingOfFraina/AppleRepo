@@ -46,7 +46,8 @@ struct AssistantView: View {
                     }
                 }
                 
-                ZStack { //here
+                if !speechRecognizer.displayTimer{
+                    ZStack { //here
                     if speechRecognizer.givingCommand {
                     Circle()
                         .stroke()
@@ -88,7 +89,7 @@ struct AssistantView: View {
                             .offset(y: 14)
                     }
                 }.padding(.all)
-            
+                }
         }.navigationBarBackButtonHidden(true)
             .onAppear{
                 speechRecognizer.transcribe()

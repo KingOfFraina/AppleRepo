@@ -102,7 +102,7 @@ struct RicettaView: View {
                                 
                             }
                                 
-                            }.padding(50)//Chiusura hstack parte inferiore
+                            }.padding(50)//Chiusura hstack parte  inferiore
                             Spacer()
                         }//Chiusura VStack Principale
                     }
