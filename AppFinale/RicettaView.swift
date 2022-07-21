@@ -107,7 +107,9 @@ struct RicettaView: View {
                         }//Chiusura VStack Principale
                     }
                 }
-            }.navigationViewStyle(StackNavigationViewStyle())
+            }
+            .navigationBarTitle(Text(""), displayMode: .inline)
+            .navigationViewStyle(StackNavigationViewStyle())
                 .sheet(isPresented: $searchIsPresented, content: {
                     
                     ModalView()

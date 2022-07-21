@@ -54,7 +54,7 @@ class SpeechRecognizer: ObservableObject {
                          
         "Now add this mixture to the one with the yolks and slowly mix it so that became a smooth cream. Come on, it’s almost over!",
                          
-        "It’s time to cook! Put a cooking pan on the stove over low heat and grease it with butter. Put a small quantity of dough and pour it in the pan slowly. The more precise you’ll be the more perfect disk you’ll obtain. When you're ready I will start a two minutes timer.",
+        "It’s time to cook! Put a cooking pan on the stove over medium-high heat, then put a small quantity of dough and pour it in the pan slowly. The more precise you’ll be the more perfect disk you’ll obtain. When you're ready I will start a two minutes timer.",
                                                              
         "Good so take a spatula and turn the pancake. Then wait another minute.",
                          
