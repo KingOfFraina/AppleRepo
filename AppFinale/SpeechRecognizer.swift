@@ -95,6 +95,7 @@ class SpeechRecognizer: ObservableObject {
                 speakError(error)
             }
         }
+        
     }
     
     @objc func fireTimer() {

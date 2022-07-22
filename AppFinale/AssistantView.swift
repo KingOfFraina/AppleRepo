@@ -1,4 +1,7 @@
 import SwiftUI
+import AVFoundation
+import Foundation
+import Speech
 
 struct AssistantView: View {
     
@@ -98,6 +101,13 @@ struct AssistantView: View {
                 }
             }.navigationBarBackButtonHidden(true)
                 .onAppear{
+                    let utterance = AVSpeechUtterance(string: "Hello! To make pancakes you need: 125 grams of flour, 25 grams of butter, 2 eggs, 200 milliliters of milk, 15 grams of sugar, 6 grams of baking powder for cakes, are you sure you have it all?")
+                    utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+                    utterance.pitchMultiplier = 1.5
+                    utterance.rate = 0.43
+                    utterance.volume = 1.0
+                    let synthetizer = AVSpeechSynthesizer()
+                    synthetizer.speak(utterance)
                     speechRecognizer.transcribe()
                 }
                 .onDisappear{
